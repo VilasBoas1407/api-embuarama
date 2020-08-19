@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d89da84355624922b0856b7694cf8814" Name="Diagram1" ZoomLevel="86">
+        <EntityTypeShape EntityType="DB_EMBUARAMA_Model.TB_BRASSAGEM" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EMBUARAMA_Model.TB_BRASSAGEM_MOAGEM" Width="1.5" PointX="7.5" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EMBUARAMA_Model.TB_CALDEIRA" Width="1.5" PointX="9.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EMBUARAMA_Model.TB_CLARIFICACAO" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EMBUARAMA_Model.TB_EMPRESA" Width="1.5" PointX="0.75" PointY="28.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EMBUARAMA_Model.TB_LUPULO" Width="1.5" PointX="12" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EMBUARAMA_Model.TB_MOAGEM" Width="1.5" PointX="5.25" PointY="32.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EMBUARAMA_Model.TB_MOSTO_PRIMARIO" Width="1.5" PointX="3" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EMBUARAMA_Model.TB_PREPARO_AGUA" Width="1.5" PointX="3" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EMBUARAMA_Model.TB_REGISTRO_LAVAGEM" Width="1.5" PointX="7.5" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EMBUARAMA_Model.TB_RENDIMENTO_MOSTURA" Width="1.5" PointX="3" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EMBUARAMA_Model.TB_REPOUSO" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EMBUARAMA_Model.TB_SACARIFICACAO" Width="1.5" PointX="3" PointY="22.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EMBUARAMA_Model.TB_TIPO_CERVEJA" Width="1.5" PointX="3" PointY="25.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EMBUARAMA_Model.TB_TIPO_LUPULO" Width="1.5" PointX="9.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EMBUARAMA_Model.TB_TIPO_MALTE" Width="1.5" PointX="3" PointY="32.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EMBUARAMA_Model.TB_TIPO_REPOUSO" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EMBUARAMA_Model.TB_USUARIO" Width="1.5" PointX="3" PointY="27.875" IsExpanded="true" />
+        <AssociationConnector Association="DB_EMBUARAMA_Model.FK__TB_BRASSA__ID_BR__25518C17" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EMBUARAMA_Model.FK__TB_BRASSA__ID_CL__1AD3FDA4" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EMBUARAMA_Model.FK__TB_BRASSA__ID_MO__1BC821DD" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EMBUARAMA_Model.FK__TB_BRASSA__ID_PR__160F4887" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EMBUARAMA_Model.FK__TB_BRASSA__ID_RE__17F790F9" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EMBUARAMA_Model.FK__TB_BRASSA__ID_RE__19DFD96B" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EMBUARAMA_Model.FK__TB_BRASSA__ID_SA__18EBB532" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EMBUARAMA_Model.FK__TB_BRASSA__ID_TI__1CBC4616" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EMBUARAMA_Model.FK__TB_BRASSA__ID_US__17036CC0" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EMBUARAMA_Model.FK__TB_REGIST__ID_BR__282DF8C2" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EMBUARAMA_Model.FK__TB_BRASSA__ID_MO__245D67DE" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EMBUARAMA_Model.FK__TB_LUPULO__ID_CA__40058253" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EMBUARAMA_Model.FK__TB_USUARI__ID_EM__72C60C4A" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EMBUARAMA_Model.FK__TB_LUPULO__ID_TI__40F9A68C" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EMBUARAMA_Model.FK__TB_MOAGEM__ID_TI__2180FB33" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EMBUARAMA_Model.FK__TB_REPOUS__ID_TI__797309D9" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

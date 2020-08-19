@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\api-embuarama\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\api-embuarama\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{19B57457-B699-4A21-B9CD-A06BA2790954}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>api_model</RootNamespace>
+    <AssemblyName>api-model</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\api-embuarama\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\api-embuarama\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EmbuaramaDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EmbuaramaDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmbuaramaDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EmbuaramaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmbuaramaDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EmbuaramaDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TB_BRASSAGEM.cs">
+      <DependentUpon>EmbuaramaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TB_BRASSAGEM_MOAGEM.cs">
+      <DependentUpon>EmbuaramaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TB_CALDEIRA.cs">
+      <DependentUpon>EmbuaramaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TB_CLARIFICACAO.cs">
+      <DependentUpon>EmbuaramaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TB_EMPRESA.cs">
+      <DependentUpon>EmbuaramaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TB_LUPULO.cs">
+      <DependentUpon>EmbuaramaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TB_MOAGEM.cs">
+      <DependentUpon>EmbuaramaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TB_MOSTO_PRIMARIO.cs">
+      <DependentUpon>EmbuaramaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TB_PREPARO_AGUA.cs">
+      <DependentUpon>EmbuaramaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TB_REGISTRO_LAVAGEM.cs">
+      <DependentUpon>EmbuaramaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TB_RENDIMENTO_MOSTURA.cs">
+      <DependentUpon>EmbuaramaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TB_REPOUSO.cs">
+      <DependentUpon>EmbuaramaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TB_SACARIFICACAO.cs">
+      <DependentUpon>EmbuaramaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TB_TIPO_CERVEJA.cs">
+      <DependentUpon>EmbuaramaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TB_TIPO_LUPULO.cs">
+      <DependentUpon>EmbuaramaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TB_TIPO_MALTE.cs">
+      <DependentUpon>EmbuaramaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TB_TIPO_REPOUSO.cs">
+      <DependentUpon>EmbuaramaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TB_USUARIO.cs">
+      <DependentUpon>EmbuaramaDB.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <EntityDeploy Include="EmbuaramaDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EmbuaramaDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="EmbuaramaDB.edmx.diagram">
+      <DependentUpon>EmbuaramaDB.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="EmbuaramaDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EmbuaramaDB.edmx</DependentUpon>
+      <LastGenOutput>EmbuaramaDB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="EmbuaramaDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EmbuaramaDB.edmx</DependentUpon>
+      <LastGenOutput>EmbuaramaDB.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\api-embuarama\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\api-embuarama\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\api-embuarama\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\api-embuarama\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\api-embuarama\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\api-embuarama\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+</Project>
