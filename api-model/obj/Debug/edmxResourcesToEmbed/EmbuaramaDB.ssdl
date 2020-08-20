@@ -1,0 +1,505 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB_EMBUARAMA_Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="TB_BRASSAGEM">
+    <Key>
+      <PropertyRef Name="ID_BRASSAGEM" />
+    </Key>
+    <Property Name="ID_BRASSAGEM" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_LOTE_PRODUCAO" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="DT_BRASSAGEM" Type="datetime" />
+    <Property Name="NR_SEMANA_PRODUCAO_INICIO" Type="int" />
+    <Property Name="NR_SEMANA_PRODUCAO_FIM" Type="int" />
+    <Property Name="DS_TANQUE" Type="varchar" MaxLength="20" />
+    <Property Name="FL_UTILIZOU_SAIS" Type="bit" />
+    <Property Name="FL_UTILIZOU_ENZIMAS" Type="bit" />
+    <Property Name="DT_INICIO_MOAGEM" Type="datetime" />
+    <Property Name="DT_FIM_MOAGEM" Type="datetime" />
+    <Property Name="DS_ANALISE_MOAGEM" Type="varchar" MaxLength="150" />
+    <Property Name="NR_DIST_ROLOS_MOAGEM" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="VL_RENDIMENTO_BRASSAGEM" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="VL_PERDA_EXTRATO" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="ID_PREPARO_AGUA" Type="int" />
+    <Property Name="ID_USUARIO_RESPONSAVEL" Type="int" />
+    <Property Name="ID_REPOUSO" Type="int" />
+    <Property Name="ID_SACARIFICACAO" Type="int" />
+    <Property Name="ID_RENDIMENTO_MOSTURA" Type="int" />
+    <Property Name="ID_CLARIFICACAO" Type="int" />
+    <Property Name="ID_MOSTO_PRIMARIO" Type="int" />
+    <Property Name="ID_TIPO_CERVEJA" Type="int" />
+  </EntityType>
+  <EntityType Name="TB_BRASSAGEM_MOAGEM">
+    <Key>
+      <PropertyRef Name="ID_BRASSAGEM_MOAGEM" />
+    </Key>
+    <Property Name="ID_BRASSAGEM_MOAGEM" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_MOAGEM" Type="int" Nullable="false" />
+    <Property Name="ID_BRASSAGEM" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TB_CALDEIRA">
+    <Key>
+      <PropertyRef Name="ID_CALDEIRA" />
+    </Key>
+    <Property Name="ID_CALDEIRA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VL_VOLUME_CALDEIRA_CHEIA" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="VL_EXTRATO_CALDEIRA_CHEIO" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="VL_PH_INICIAL" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="VL_PH_FINAL" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="HR_INICIO_FERVURA" Type="datetime" />
+    <Property Name="HR_FINAL_FERVURA" Type="datetime" />
+    <Property Name="VL_TOTAL_FERVURA" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="VL_QUANT_ACUCAR" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="VL_TEOR_AMARGOR" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="VL_DOSAGEM_CLEARMAX" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="VL_DOSAGEM_WHIRFLOC" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="VL_RELACAO_DOSAGEM_WHIRFLOC" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="VL_DOSAGEM_SERVOMYCES" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="DS_ANALISE_FORMACAO_TRUB" Type="varchar" MaxLength="2" />
+    <Property Name="VL_EXTRATO_APRONTE" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="VL_TAXA_EVAPORACAO" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="VL_PRESSAO_CALDEIRA" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="VL_TEMPO_CIRCULACAO" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="HR_INICIO_REPOUSO" Type="datetime" />
+    <Property Name="HR_FINAL_REPOUSO" Type="datetime" />
+  </EntityType>
+  <EntityType Name="TB_CLARIFICACAO">
+    <Key>
+      <PropertyRef Name="ID_CLARIFICACAO" />
+    </Key>
+    <Property Name="ID_CLARIFICACAO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VL_CARGA_FILTRO" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="VL_VOLUME_LASTRO" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="VL_TEMPO_REPOUSO" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="HR_INICIO_CIRCULACAO" Type="datetime" />
+    <Property Name="HR_FINAL_CIRCULACAO" Type="datetime" />
+    <Property Name="VL_VOLUME_CLARIFICACAO" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="VL_EXTRATO" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="VL_ANALISE_SOLIDOS" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="TB_EMPRESA">
+    <Key>
+      <PropertyRef Name="ID_EMPRESA" />
+    </Key>
+    <Property Name="ID_EMPRESA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DS_NOME_EMPRESA" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="NR_CNPJ" Type="varchar" MaxLength="14" Nullable="false" />
+    <Property Name="DS_NOME_RESPONSAVEL" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="DS_EMAIL_EMPRESA" Type="varchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TB_LUPULO">
+    <Key>
+      <PropertyRef Name="ID_LUPULO" />
+    </Key>
+    <Property Name="ID_LUPULO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_CALDEIRA" Type="int" Nullable="false" />
+    <Property Name="ID_TIPO_LUPULO" Type="int" Nullable="false" />
+    <Property Name="DS_LOTE" Type="varchar" MaxLength="100" />
+    <Property Name="VL_QUANT" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="VL_RENDIMENTO" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="HR_DOSAGEM" Type="datetime" />
+  </EntityType>
+  <EntityType Name="TB_MOAGEM">
+    <Key>
+      <PropertyRef Name="ID_MOAGEM" />
+    </Key>
+    <Property Name="ID_MOAGEM" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_TIPO_MALTE" Type="int" Nullable="false" />
+    <Property Name="DS_QUANT_MALTE" Type="varchar" MaxLength="10" />
+    <Property Name="DS_REND_MALTE" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="TB_MOSTO_PRIMARIO">
+    <Key>
+      <PropertyRef Name="ID_MOSTO_PRIMARIO" />
+    </Key>
+    <Property Name="ID_MOSTO_PRIMARIO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HR_INICIO_MOSTO" Type="datetime" />
+    <Property Name="HR_TERMINIO_MOSTO" Type="datetime" />
+    <Property Name="VL_VAZAO_MEDIA_REAL" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="VL_VAZAO_MEDIA_IDEAL" Type="decimal" Precision="10" Scale="2" />
+  </EntityType>
+  <EntityType Name="TB_PREPARO_AGUA">
+    <Key>
+      <PropertyRef Name="ID_PREPARO_AGUA" />
+    </Key>
+    <Property Name="ID_PREPARO_AGUA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VL_VOLUME_AGUA" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="VL_CLORO" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="VL_TEMP" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="VL_REL_AGUA_MALTE" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="VL_ULTRAFLO_RECOMENDADO" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="VL_ULTRAFLO_UTILIZADO" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="VL_MALTEZYN_UTILIZADO" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="VL_ACIDO_FOSFORICO" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="VL_ACIDO_LATICO" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="VL_SULFATO_CALCIO" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="VL_CLORETO_CALCIO" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="VL_PH" Type="decimal" Precision="10" Scale="2" />
+  </EntityType>
+  <EntityType Name="TB_REGISTRO_LAVAGEM">
+    <Key>
+      <PropertyRef Name="ID_REGISTRO_LAVAGEM" />
+    </Key>
+    <Property Name="ID_REGISTRO_LAVAGEM" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_BRASSAGEM" Type="int" Nullable="false" />
+    <Property Name="NR_LAVAGEM" Type="int" />
+    <Property Name="VL_TEMP_AGUA" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="VL_VOLUME_AGUA" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="HR_INICIO_LAVAGEM" Type="datetime" />
+    <Property Name="HR_FIM_LAVAGEM" Type="datetime" />
+    <Property Name="VL_VOLUME_LAVAGEM" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="VL_EXTRATO_LAVAGEM" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="VL_VAZAO_MEDIA_IDEAL" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="VL_RAZAO_MEDIA_REAL" Type="decimal" Precision="10" Scale="2" />
+  </EntityType>
+  <EntityType Name="TB_RENDIMENTO_MOSTURA">
+    <Key>
+      <PropertyRef Name="ID_RENDIMENTO_MOSTURA" />
+    </Key>
+    <Property Name="ID_RENDIMENTO_MOSTURA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VL_EXTRATO_FINAL_MOSTURA" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="VL_DENSIDADE_MOSTURA" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="VL_EXTRATO_TEORICO_MOSTURA" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="VL_EXTRATO_REAL_MOSTURA" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="VL_RENDIMENTO_MOSTURA" Type="decimal" Precision="10" Scale="2" />
+  </EntityType>
+  <EntityType Name="TB_REPOUSO">
+    <Key>
+      <PropertyRef Name="ID_REPOUSO" />
+    </Key>
+    <Property Name="ID_REPOUSO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_TIPO_REPOUSO" Type="int" Nullable="false" />
+    <Property Name="VL_TEMP" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="DT_HORA_INICIO" Type="datetime" />
+    <Property Name="DT_HORA_FIM" Type="datetime" />
+  </EntityType>
+  <EntityType Name="TB_SACARIFICACAO">
+    <Key>
+      <PropertyRef Name="ID_SACARIFICACAO" />
+    </Key>
+    <Property Name="ID_SACARIFICACAO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VL_TEMP_SACARIFICACAO" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="DT_HORA_INICIO_SACARIFICACAO" Type="datetime" />
+    <Property Name="DT_HORA_FIM_SACARIFICACAO" Type="datetime" />
+    <Property Name="VL_TESTE_IODO_SACARIFICACAO" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="TB_TIPO_CERVEJA">
+    <Key>
+      <PropertyRef Name="ID_TIPO_CERVEJA" />
+    </Key>
+    <Property Name="ID_TIPO_CERVEJA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DS_TIPO_CERVEJA" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TB_TIPO_LUPULO">
+    <Key>
+      <PropertyRef Name="ID_TIPO_LUPULO" />
+    </Key>
+    <Property Name="ID_TIPO_LUPULO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DS_TIPO_LUPULO" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TB_TIPO_MALTE">
+    <Key>
+      <PropertyRef Name="ID_TIPO_MALTE" />
+    </Key>
+    <Property Name="ID_TIPO_MALTE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DS_TIPO_MALTE" Type="varchar" MaxLength="30" />
+    <Property Name="DS_LOTE" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="TB_TIPO_REPOUSO">
+    <Key>
+      <PropertyRef Name="ID_TIPO_REPOUSO" />
+    </Key>
+    <Property Name="ID_TIPO_REPOUSO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DS_TIPO_REPOUSO" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TB_USUARIO">
+    <Key>
+      <PropertyRef Name="ID_USUARIO" />
+    </Key>
+    <Property Name="ID_USUARIO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DS_NOME" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="DS_EMAIL" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="DS_LOGIN" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="DS_SENHA" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="NR_DDD" Type="int" Nullable="false" />
+    <Property Name="NR_TELEFONE" Type="int" Nullable="false" />
+    <Property Name="DS_FUNCAO" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="FL_ADMINISTRADOR" Type="bit" Nullable="false" />
+    <Property Name="FL_REMEMBER" Type="bit" Nullable="false" />
+    <Property Name="ID_EMPRESA" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__TB_BRASSA__ID_BR__25518C17">
+    <End Role="TB_BRASSAGEM" Type="Self.TB_BRASSAGEM" Multiplicity="1" />
+    <End Role="TB_BRASSAGEM_MOAGEM" Type="Self.TB_BRASSAGEM_MOAGEM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_BRASSAGEM">
+        <PropertyRef Name="ID_BRASSAGEM" />
+      </Principal>
+      <Dependent Role="TB_BRASSAGEM_MOAGEM">
+        <PropertyRef Name="ID_BRASSAGEM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TB_BRASSA__ID_CL__1AD3FDA4">
+    <End Role="TB_CLARIFICACAO" Type="Self.TB_CLARIFICACAO" Multiplicity="0..1" />
+    <End Role="TB_BRASSAGEM" Type="Self.TB_BRASSAGEM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_CLARIFICACAO">
+        <PropertyRef Name="ID_CLARIFICACAO" />
+      </Principal>
+      <Dependent Role="TB_BRASSAGEM">
+        <PropertyRef Name="ID_CLARIFICACAO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TB_BRASSA__ID_MO__1BC821DD">
+    <End Role="TB_MOSTO_PRIMARIO" Type="Self.TB_MOSTO_PRIMARIO" Multiplicity="0..1" />
+    <End Role="TB_BRASSAGEM" Type="Self.TB_BRASSAGEM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_MOSTO_PRIMARIO">
+        <PropertyRef Name="ID_MOSTO_PRIMARIO" />
+      </Principal>
+      <Dependent Role="TB_BRASSAGEM">
+        <PropertyRef Name="ID_MOSTO_PRIMARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TB_BRASSA__ID_MO__245D67DE">
+    <End Role="TB_MOAGEM" Type="Self.TB_MOAGEM" Multiplicity="1" />
+    <End Role="TB_BRASSAGEM_MOAGEM" Type="Self.TB_BRASSAGEM_MOAGEM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_MOAGEM">
+        <PropertyRef Name="ID_MOAGEM" />
+      </Principal>
+      <Dependent Role="TB_BRASSAGEM_MOAGEM">
+        <PropertyRef Name="ID_MOAGEM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TB_BRASSA__ID_PR__160F4887">
+    <End Role="TB_PREPARO_AGUA" Type="Self.TB_PREPARO_AGUA" Multiplicity="0..1" />
+    <End Role="TB_BRASSAGEM" Type="Self.TB_BRASSAGEM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_PREPARO_AGUA">
+        <PropertyRef Name="ID_PREPARO_AGUA" />
+      </Principal>
+      <Dependent Role="TB_BRASSAGEM">
+        <PropertyRef Name="ID_PREPARO_AGUA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TB_BRASSA__ID_RE__17F790F9">
+    <End Role="TB_REPOUSO" Type="Self.TB_REPOUSO" Multiplicity="0..1" />
+    <End Role="TB_BRASSAGEM" Type="Self.TB_BRASSAGEM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_REPOUSO">
+        <PropertyRef Name="ID_REPOUSO" />
+      </Principal>
+      <Dependent Role="TB_BRASSAGEM">
+        <PropertyRef Name="ID_REPOUSO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TB_BRASSA__ID_RE__19DFD96B">
+    <End Role="TB_RENDIMENTO_MOSTURA" Type="Self.TB_RENDIMENTO_MOSTURA" Multiplicity="0..1" />
+    <End Role="TB_BRASSAGEM" Type="Self.TB_BRASSAGEM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_RENDIMENTO_MOSTURA">
+        <PropertyRef Name="ID_RENDIMENTO_MOSTURA" />
+      </Principal>
+      <Dependent Role="TB_BRASSAGEM">
+        <PropertyRef Name="ID_RENDIMENTO_MOSTURA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TB_BRASSA__ID_SA__18EBB532">
+    <End Role="TB_SACARIFICACAO" Type="Self.TB_SACARIFICACAO" Multiplicity="0..1" />
+    <End Role="TB_BRASSAGEM" Type="Self.TB_BRASSAGEM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_SACARIFICACAO">
+        <PropertyRef Name="ID_SACARIFICACAO" />
+      </Principal>
+      <Dependent Role="TB_BRASSAGEM">
+        <PropertyRef Name="ID_SACARIFICACAO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TB_BRASSA__ID_TI__1CBC4616">
+    <End Role="TB_TIPO_CERVEJA" Type="Self.TB_TIPO_CERVEJA" Multiplicity="0..1" />
+    <End Role="TB_BRASSAGEM" Type="Self.TB_BRASSAGEM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_TIPO_CERVEJA">
+        <PropertyRef Name="ID_TIPO_CERVEJA" />
+      </Principal>
+      <Dependent Role="TB_BRASSAGEM">
+        <PropertyRef Name="ID_TIPO_CERVEJA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TB_BRASSA__ID_US__17036CC0">
+    <End Role="TB_USUARIO" Type="Self.TB_USUARIO" Multiplicity="0..1" />
+    <End Role="TB_BRASSAGEM" Type="Self.TB_BRASSAGEM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_USUARIO">
+        <PropertyRef Name="ID_USUARIO" />
+      </Principal>
+      <Dependent Role="TB_BRASSAGEM">
+        <PropertyRef Name="ID_USUARIO_RESPONSAVEL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TB_LUPULO__ID_CA__40058253">
+    <End Role="TB_CALDEIRA" Type="Self.TB_CALDEIRA" Multiplicity="1" />
+    <End Role="TB_LUPULO" Type="Self.TB_LUPULO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_CALDEIRA">
+        <PropertyRef Name="ID_CALDEIRA" />
+      </Principal>
+      <Dependent Role="TB_LUPULO">
+        <PropertyRef Name="ID_CALDEIRA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TB_LUPULO__ID_TI__40F9A68C">
+    <End Role="TB_TIPO_LUPULO" Type="Self.TB_TIPO_LUPULO" Multiplicity="1" />
+    <End Role="TB_LUPULO" Type="Self.TB_LUPULO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_TIPO_LUPULO">
+        <PropertyRef Name="ID_TIPO_LUPULO" />
+      </Principal>
+      <Dependent Role="TB_LUPULO">
+        <PropertyRef Name="ID_TIPO_LUPULO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TB_MOAGEM__ID_TI__2180FB33">
+    <End Role="TB_TIPO_MALTE" Type="Self.TB_TIPO_MALTE" Multiplicity="1" />
+    <End Role="TB_MOAGEM" Type="Self.TB_MOAGEM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_TIPO_MALTE">
+        <PropertyRef Name="ID_TIPO_MALTE" />
+      </Principal>
+      <Dependent Role="TB_MOAGEM">
+        <PropertyRef Name="ID_TIPO_MALTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TB_REGIST__ID_BR__282DF8C2">
+    <End Role="TB_BRASSAGEM" Type="Self.TB_BRASSAGEM" Multiplicity="1" />
+    <End Role="TB_REGISTRO_LAVAGEM" Type="Self.TB_REGISTRO_LAVAGEM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_BRASSAGEM">
+        <PropertyRef Name="ID_BRASSAGEM" />
+      </Principal>
+      <Dependent Role="TB_REGISTRO_LAVAGEM">
+        <PropertyRef Name="ID_BRASSAGEM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TB_REPOUS__ID_TI__797309D9">
+    <End Role="TB_TIPO_REPOUSO" Type="Self.TB_TIPO_REPOUSO" Multiplicity="1" />
+    <End Role="TB_REPOUSO" Type="Self.TB_REPOUSO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_TIPO_REPOUSO">
+        <PropertyRef Name="ID_TIPO_REPOUSO" />
+      </Principal>
+      <Dependent Role="TB_REPOUSO">
+        <PropertyRef Name="ID_TIPO_REPOUSO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TB_USUARI__ID_EM__72C60C4A">
+    <End Role="TB_EMPRESA" Type="Self.TB_EMPRESA" Multiplicity="1" />
+    <End Role="TB_USUARIO" Type="Self.TB_USUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_EMPRESA">
+        <PropertyRef Name="ID_EMPRESA" />
+      </Principal>
+      <Dependent Role="TB_USUARIO">
+        <PropertyRef Name="ID_EMPRESA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DB_EMBUARAMA_ModelStoreContainer">
+    <EntitySet Name="TB_BRASSAGEM" EntityType="Self.TB_BRASSAGEM" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_BRASSAGEM_MOAGEM" EntityType="Self.TB_BRASSAGEM_MOAGEM" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_CALDEIRA" EntityType="Self.TB_CALDEIRA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_CLARIFICACAO" EntityType="Self.TB_CLARIFICACAO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_EMPRESA" EntityType="Self.TB_EMPRESA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_LUPULO" EntityType="Self.TB_LUPULO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_MOAGEM" EntityType="Self.TB_MOAGEM" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_MOSTO_PRIMARIO" EntityType="Self.TB_MOSTO_PRIMARIO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_PREPARO_AGUA" EntityType="Self.TB_PREPARO_AGUA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_REGISTRO_LAVAGEM" EntityType="Self.TB_REGISTRO_LAVAGEM" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_RENDIMENTO_MOSTURA" EntityType="Self.TB_RENDIMENTO_MOSTURA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_REPOUSO" EntityType="Self.TB_REPOUSO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_SACARIFICACAO" EntityType="Self.TB_SACARIFICACAO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_TIPO_CERVEJA" EntityType="Self.TB_TIPO_CERVEJA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_TIPO_LUPULO" EntityType="Self.TB_TIPO_LUPULO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_TIPO_MALTE" EntityType="Self.TB_TIPO_MALTE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_TIPO_REPOUSO" EntityType="Self.TB_TIPO_REPOUSO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TB_USUARIO" EntityType="Self.TB_USUARIO" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__TB_BRASSA__ID_BR__25518C17" Association="Self.FK__TB_BRASSA__ID_BR__25518C17">
+      <End Role="TB_BRASSAGEM" EntitySet="TB_BRASSAGEM" />
+      <End Role="TB_BRASSAGEM_MOAGEM" EntitySet="TB_BRASSAGEM_MOAGEM" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TB_BRASSA__ID_CL__1AD3FDA4" Association="Self.FK__TB_BRASSA__ID_CL__1AD3FDA4">
+      <End Role="TB_CLARIFICACAO" EntitySet="TB_CLARIFICACAO" />
+      <End Role="TB_BRASSAGEM" EntitySet="TB_BRASSAGEM" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TB_BRASSA__ID_MO__1BC821DD" Association="Self.FK__TB_BRASSA__ID_MO__1BC821DD">
+      <End Role="TB_MOSTO_PRIMARIO" EntitySet="TB_MOSTO_PRIMARIO" />
+      <End Role="TB_BRASSAGEM" EntitySet="TB_BRASSAGEM" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TB_BRASSA__ID_MO__245D67DE" Association="Self.FK__TB_BRASSA__ID_MO__245D67DE">
+      <End Role="TB_MOAGEM" EntitySet="TB_MOAGEM" />
+      <End Role="TB_BRASSAGEM_MOAGEM" EntitySet="TB_BRASSAGEM_MOAGEM" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TB_BRASSA__ID_PR__160F4887" Association="Self.FK__TB_BRASSA__ID_PR__160F4887">
+      <End Role="TB_PREPARO_AGUA" EntitySet="TB_PREPARO_AGUA" />
+      <End Role="TB_BRASSAGEM" EntitySet="TB_BRASSAGEM" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TB_BRASSA__ID_RE__17F790F9" Association="Self.FK__TB_BRASSA__ID_RE__17F790F9">
+      <End Role="TB_REPOUSO" EntitySet="TB_REPOUSO" />
+      <End Role="TB_BRASSAGEM" EntitySet="TB_BRASSAGEM" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TB_BRASSA__ID_RE__19DFD96B" Association="Self.FK__TB_BRASSA__ID_RE__19DFD96B">
+      <End Role="TB_RENDIMENTO_MOSTURA" EntitySet="TB_RENDIMENTO_MOSTURA" />
+      <End Role="TB_BRASSAGEM" EntitySet="TB_BRASSAGEM" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TB_BRASSA__ID_SA__18EBB532" Association="Self.FK__TB_BRASSA__ID_SA__18EBB532">
+      <End Role="TB_SACARIFICACAO" EntitySet="TB_SACARIFICACAO" />
+      <End Role="TB_BRASSAGEM" EntitySet="TB_BRASSAGEM" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TB_BRASSA__ID_TI__1CBC4616" Association="Self.FK__TB_BRASSA__ID_TI__1CBC4616">
+      <End Role="TB_TIPO_CERVEJA" EntitySet="TB_TIPO_CERVEJA" />
+      <End Role="TB_BRASSAGEM" EntitySet="TB_BRASSAGEM" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TB_BRASSA__ID_US__17036CC0" Association="Self.FK__TB_BRASSA__ID_US__17036CC0">
+      <End Role="TB_USUARIO" EntitySet="TB_USUARIO" />
+      <End Role="TB_BRASSAGEM" EntitySet="TB_BRASSAGEM" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TB_LUPULO__ID_CA__40058253" Association="Self.FK__TB_LUPULO__ID_CA__40058253">
+      <End Role="TB_CALDEIRA" EntitySet="TB_CALDEIRA" />
+      <End Role="TB_LUPULO" EntitySet="TB_LUPULO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TB_LUPULO__ID_TI__40F9A68C" Association="Self.FK__TB_LUPULO__ID_TI__40F9A68C">
+      <End Role="TB_TIPO_LUPULO" EntitySet="TB_TIPO_LUPULO" />
+      <End Role="TB_LUPULO" EntitySet="TB_LUPULO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TB_MOAGEM__ID_TI__2180FB33" Association="Self.FK__TB_MOAGEM__ID_TI__2180FB33">
+      <End Role="TB_TIPO_MALTE" EntitySet="TB_TIPO_MALTE" />
+      <End Role="TB_MOAGEM" EntitySet="TB_MOAGEM" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TB_REGIST__ID_BR__282DF8C2" Association="Self.FK__TB_REGIST__ID_BR__282DF8C2">
+      <End Role="TB_BRASSAGEM" EntitySet="TB_BRASSAGEM" />
+      <End Role="TB_REGISTRO_LAVAGEM" EntitySet="TB_REGISTRO_LAVAGEM" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TB_REPOUS__ID_TI__797309D9" Association="Self.FK__TB_REPOUS__ID_TI__797309D9">
+      <End Role="TB_TIPO_REPOUSO" EntitySet="TB_TIPO_REPOUSO" />
+      <End Role="TB_REPOUSO" EntitySet="TB_REPOUSO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TB_USUARI__ID_EM__72C60C4A" Association="Self.FK__TB_USUARI__ID_EM__72C60C4A">
+      <End Role="TB_EMPRESA" EntitySet="TB_EMPRESA" />
+      <End Role="TB_USUARIO" EntitySet="TB_USUARIO" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

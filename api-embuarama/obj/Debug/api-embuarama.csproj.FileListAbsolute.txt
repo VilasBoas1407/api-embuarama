@@ -83,3 +83,10 @@ D:\Projetos\Embuarama\api-embuarama\api-embuarama\obj\Debug\api-embuarama.csproj
 D:\Projetos\Embuarama\api-embuarama\api-embuarama\obj\Debug\api-embuarama.csproj.CopyComplete
 D:\Projetos\Embuarama\api-embuarama\api-embuarama\obj\Debug\api-embuarama.dll
 D:\Projetos\Embuarama\api-embuarama\api-embuarama\obj\Debug\api-embuarama.pdb
+D:\Projetos\Embuarama\api-embuarama\api-embuarama\bin\api-model.dll
+D:\Projetos\Embuarama\api-embuarama\api-embuarama\bin\EntityFramework.dll
+D:\Projetos\Embuarama\api-embuarama\api-embuarama\bin\EntityFramework.SqlServer.dll
+D:\Projetos\Embuarama\api-embuarama\api-embuarama\bin\api-model.pdb
+D:\Projetos\Embuarama\api-embuarama\api-embuarama\bin\api-model.dll.config
+D:\Projetos\Embuarama\api-embuarama\api-embuarama\bin\EntityFramework.xml
+D:\Projetos\Embuarama\api-embuarama\api-embuarama\bin\EntityFramework.SqlServer.xml
