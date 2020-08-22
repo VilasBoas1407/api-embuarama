@@ -27,11 +27,58 @@ namespace api_embuarama.Models.User
                 throw ex;
             }
         }
+
+        public bool FindUserByEmail(string DS_EMAIL)
+        {
+            bool ret = true;
+            TB_USUARIO User = new TB_USUARIO();
+
+            try
+            {
+                User = db.TB_USUARIO
+                    .Where(C => C.DS_EMAIL == DS_EMAIL)
+                    .FirstOrDefault();
+
+                if (User != null)
+                    ret = false;
+
+                return ret;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public bool FindUserByLogin(string DS_LOGIN)
+        {
+            bool ret = true;
+            TB_USUARIO User = new TB_USUARIO();
+
+            try
+            {
+                User = db.TB_USUARIO
+                    .Where(C => C.DS_LOGIN == DS_LOGIN)
+                    .FirstOrDefault();
+
+                if (User != null)
+                    ret = false;
+
+                return ret;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
         public void Create(TB_USUARIO User)
         {
             try
             {
-                db.TB_USUARIO.Attach(User);
+                db.TB_USUARIO.Add(User);
                 db.SaveChanges();
             }
             catch (Exception ex)

@@ -12,7 +12,7 @@ namespace api_embuarama.Models.Company
 
         public bool FindCompanyByID(string DS_TOKEN_EMPRESA)
         {
-            bool ret = false;
+            bool ret = true;
             TB_EMPRESA Company = new TB_EMPRESA();
 
             try
@@ -22,7 +22,7 @@ namespace api_embuarama.Models.Company
                     .FirstOrDefault();
 
                 if (Company != null)
-                    ret = true;
+                    ret = false;
 
                 return ret;
             }

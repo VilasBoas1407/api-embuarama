@@ -37,31 +37,40 @@ namespace api_embuarama.Controllers.User
         }
 
         [HttpPost]
-        [Route("v1/api/user")]
+        [Route("v1/api/user/register")]
         public HttpResponseMessage Register(TB_USUARIO User)
         {
 
             Usuario u = new Usuario();
             Empresa e = new Empresa();
 
-
-            bool TokenEmpresaValido = false;
+            string errorMessage = String.Empty;
 
             try
             {
                 if (ModelState.IsValid)
                 {
-                    TokenEmpresaValido = e.FindCompanyByID(User.DS_TOKEN_EMPRESA);
+                    bool TokenEmpresaValido = e.FindCompanyByID(User.DS_TOKEN_EMPRESA);
+                    bool EmailValido = u.FindUserByEmail(User.DS_EMAIL);
+                    bool LoginValido = u.FindUserByLogin(User.DS_LOGIN);
 
-                    if (TokenEmpresaValido)
+                    if (TokenEmpresaValido && EmailValido && LoginValido)
                     {
                         User.DS_SENHA = serv.CriptografarSenha(User.DS_SENHA);
                         u.Create(User);
-                        return Request.CreateResponse(HttpStatusCode.OK, new { valid = true, message = "Usuário cadastro com sucesso!" });
+                        return Request.CreateResponse(HttpStatusCode.OK, new { valid = true, message = "Usuário cadastrado com sucesso!" });
                     }
                     else
                     {
-                        return Request.CreateResponse(HttpStatusCode.OK, new { valid = false, message = "O token empresa digitado não corresponde a nenhuma empresa na nossa base de dados!" });
+                        if (!TokenEmpresaValido)
+                            errorMessage = "O token empresa digitado não corresponde a nenhuma empresa na nossa base de dados!;";
+                        if (!EmailValido)
+                            errorMessage += "O e-mail digitado já está cadastrado na nossa base da dados!;";
+                        if (!LoginValido)
+                            errorMessage += "O login digitado já está cadastrado na nossa base da dados!";
+
+                        return Request.CreateResponse(HttpStatusCode.OK, new { valid = false, message = errorMessage });
+
                     }
                 }
                 else
