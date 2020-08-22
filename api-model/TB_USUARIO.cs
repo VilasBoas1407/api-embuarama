@@ -31,6 +31,7 @@ namespace api_model
         public bool FL_ADMINISTRADOR { get; set; }
         public bool FL_REMEMBER { get; set; }
         public int ID_EMPRESA { get; set; }
+        public string DS_TOKEN_EMPRESA { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TB_BRASSAGEM> TB_BRASSAGEM { get; set; }

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DB_EMBUARAMA_Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DB_EMBUARAMA_Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="TB_BRASSAGEM">
           <Key>
             <PropertyRef Name="ID_BRASSAGEM" />
@@ -89,6 +89,7 @@
           <Property Name="NR_CNPJ" Type="varchar" MaxLength="14" Nullable="false" />
           <Property Name="DS_NOME_RESPONSAVEL" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="DS_EMAIL_EMPRESA" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="DS_TOKEN_EMPRESA" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="TB_LUPULO">
           <Key>
@@ -230,6 +231,7 @@
           <Property Name="FL_ADMINISTRADOR" Type="bit" Nullable="false" />
           <Property Name="FL_REMEMBER" Type="bit" Nullable="false" />
           <Property Name="ID_EMPRESA" Type="int" Nullable="false" />
+          <Property Name="DS_TOKEN_EMPRESA" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <Association Name="FK__TB_BRASSA__ID_BR__25518C17">
           <End Role="TB_BRASSAGEM" Type="Self.TB_BRASSAGEM" Multiplicity="1" />
@@ -507,8 +509,7 @@
             <End Role="TB_USUARIO" EntitySet="TB_USUARIO" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DB_EMBUARAMA_Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -611,6 +612,7 @@
           <Property Name="DS_NOME_RESPONSAVEL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DS_EMAIL_EMPRESA" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="TB_USUARIO" Relationship="Self.FK__TB_USUARI__ID_EM__72C60C4A" FromRole="TB_EMPRESA" ToRole="TB_USUARIO" />
+          <Property Name="DS_TOKEN_EMPRESA" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="TB_LUPULO">
           <Key>
@@ -769,6 +771,7 @@
           <Property Name="ID_EMPRESA" Type="Int32" Nullable="false" />
           <NavigationProperty Name="TB_BRASSAGEM" Relationship="Self.FK__TB_BRASSA__ID_US__17036CC0" FromRole="TB_USUARIO" ToRole="TB_BRASSAGEM" />
           <NavigationProperty Name="TB_EMPRESA" Relationship="Self.FK__TB_USUARI__ID_EM__72C60C4A" FromRole="TB_USUARIO" ToRole="TB_EMPRESA" />
+          <Property Name="DS_TOKEN_EMPRESA" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK__TB_BRASSA__ID_BR__25518C17">
           <End Role="TB_BRASSAGEM" Type="Self.TB_BRASSAGEM" Multiplicity="1" />
@@ -1134,6 +1137,7 @@
           <EntitySetMapping Name="TB_EMPRESA">
             <EntityTypeMapping TypeName="DB_EMBUARAMA_Model.TB_EMPRESA">
               <MappingFragment StoreEntitySet="TB_EMPRESA">
+                <ScalarProperty Name="DS_TOKEN_EMPRESA" ColumnName="DS_TOKEN_EMPRESA" />
                 <ScalarProperty Name="ID_EMPRESA" ColumnName="ID_EMPRESA" />
                 <ScalarProperty Name="DS_NOME_EMPRESA" ColumnName="DS_NOME_EMPRESA" />
                 <ScalarProperty Name="NR_CNPJ" ColumnName="NR_CNPJ" />
@@ -1282,6 +1286,7 @@
           <EntitySetMapping Name="TB_USUARIO">
             <EntityTypeMapping TypeName="DB_EMBUARAMA_Model.TB_USUARIO">
               <MappingFragment StoreEntitySet="TB_USUARIO">
+                <ScalarProperty Name="DS_TOKEN_EMPRESA" ColumnName="DS_TOKEN_EMPRESA" />
                 <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
                 <ScalarProperty Name="DS_NOME" ColumnName="DS_NOME" />
                 <ScalarProperty Name="DS_EMAIL" ColumnName="DS_EMAIL" />

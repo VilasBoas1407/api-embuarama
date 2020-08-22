@@ -25,6 +25,7 @@ namespace api_model
         public string NR_CNPJ { get; set; }
         public string DS_NOME_RESPONSAVEL { get; set; }
         public string DS_EMAIL_EMPRESA { get; set; }
+        public string DS_TOKEN_EMPRESA { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TB_USUARIO> TB_USUARIO { get; set; }

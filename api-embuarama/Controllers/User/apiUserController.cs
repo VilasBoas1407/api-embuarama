@@ -1,9 +1,8 @@
-﻿using api_embuarama.Models.User;
+﻿using api_embuarama.Models.Company;
+using api_embuarama.Models.User;
 using api_embuarama.Utils;
 using api_model;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -26,10 +25,10 @@ namespace api_embuarama.Controllers.User
             {
                 ds_senha = serv.CriptografarSenha(ds_senha);
                 usuario = u.Validate(ds_login, ds_senha);
-                if(usuario != null)
-                    return Request.CreateResponse(HttpStatusCode.InternalServerError, new { valid = true, message = "Bem vindo!", userData = usuario });
+                if (usuario != null)
+                    return Request.CreateResponse(HttpStatusCode.OK, new { valid = true, message = "Bem vindo!", userData = usuario });
                 else
-                    return Request.CreateResponse(HttpStatusCode.InternalServerError, new { valid = true, message = "Login ou senha inválidos!" });
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, new { valid = true, message = "Login ou senha inválidos!" });
             }
             catch (Exception ex)
             {
@@ -43,14 +42,27 @@ namespace api_embuarama.Controllers.User
         {
 
             Usuario u = new Usuario();
+            Empresa e = new Empresa();
+
+
+            bool TokenEmpresaValido = false;
 
             try
             {
                 if (ModelState.IsValid)
                 {
-                    User.DS_SENHA = serv.CriptografarSenha(User.DS_SENHA);
-                    u.Create(User);
-                    return Request.CreateResponse(HttpStatusCode.OK, new { valid = true, message = "Usuário cadastro com sucesso!" });
+                    TokenEmpresaValido = e.FindCompanyByID(User.DS_TOKEN_EMPRESA);
+
+                    if (TokenEmpresaValido)
+                    {
+                        User.DS_SENHA = serv.CriptografarSenha(User.DS_SENHA);
+                        u.Create(User);
+                        return Request.CreateResponse(HttpStatusCode.OK, new { valid = true, message = "Usuário cadastro com sucesso!" });
+                    }
+                    else
+                    {
+                        return Request.CreateResponse(HttpStatusCode.OK, new { valid = false, message = "O token empresa digitado não corresponde a nenhuma empresa na nossa base de dados!" });
+                    }
                 }
                 else
                 {
