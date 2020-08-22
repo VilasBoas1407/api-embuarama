@@ -1,0 +1,12 @@
+D:\Projetos\Embuarama\api-embuarama\api-model\bin\Debug\api-model.dll.config
+D:\Projetos\Embuarama\api-embuarama\api-model\bin\Debug\api-model.dll
+D:\Projetos\Embuarama\api-embuarama\api-model\bin\Debug\api-model.pdb
+D:\Projetos\Embuarama\api-embuarama\api-model\bin\Debug\EntityFramework.dll
+D:\Projetos\Embuarama\api-embuarama\api-model\bin\Debug\EntityFramework.SqlServer.dll
+D:\Projetos\Embuarama\api-embuarama\api-model\bin\Debug\EntityFramework.xml
+D:\Projetos\Embuarama\api-embuarama\api-model\bin\Debug\EntityFramework.SqlServer.xml
+D:\Projetos\Embuarama\api-embuarama\api-model\obj\Debug\api-model.csprojAssemblyReference.cache
+D:\Projetos\Embuarama\api-embuarama\api-model\obj\Debug\api-model.csproj.CoreCompileInputs.cache
+D:\Projetos\Embuarama\api-embuarama\api-model\obj\Debug\api-model.csproj.CopyComplete
+D:\Projetos\Embuarama\api-embuarama\api-model\obj\Debug\api-model.dll
+D:\Projetos\Embuarama\api-embuarama\api-model\obj\Debug\api-model.pdb

@@ -24,6 +24,20 @@ namespace api_embuarama.Utils
 
             return hash;
         }
+
+        public string GerarTokenEmpresa()
+        {
+            string caracteresPermitidos = "abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ0123456789";
+            string dsTokenEmpresa = String.Empty;
+            char[] chars = new char[6];
+            Random rd = new Random();
+            for (int i = 0; i < 6; i++)
+            {
+                chars[i] = caracteresPermitidos[rd.Next(0, caracteresPermitidos.Length)];
+            }
+            dsTokenEmpresa = "EMBU_" + new string(chars);
+            return dsTokenEmpresa;
+        }
     }
 
 }

@@ -33,5 +33,67 @@ namespace api_embuarama.Models.Company
             }
         }
 
+        public bool FindCompanyByEmail(string DS_EMAIL_EMPRESA)
+        {
+            bool ret = true;
+            TB_EMPRESA Company = new TB_EMPRESA();
+
+            try
+            {
+                Company = db.TB_EMPRESA
+                    .Where(C => C.DS_EMAIL_EMPRESA == DS_EMAIL_EMPRESA)
+                    .FirstOrDefault();
+
+                if (Company != null)
+                    ret = false;
+
+                return ret;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public bool FindCompanyByCnpj(string NR_CNPJ)
+        {
+            bool ret = true;
+            TB_EMPRESA Company = new TB_EMPRESA();
+
+            try
+            {
+                Company = db.TB_EMPRESA
+                    .Where(C => C.NR_CNPJ == NR_CNPJ)
+                    .FirstOrDefault();
+
+                if (Company != null)
+                    ret = false;
+
+                return ret;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public TB_EMPRESA Create(TB_EMPRESA Company)
+        {
+            TB_EMPRESA Empresa = new TB_EMPRESA();
+
+            try
+            {
+                Empresa =  db.TB_EMPRESA.Add(Company);
+                db.SaveChanges();
+
+                return Empresa;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

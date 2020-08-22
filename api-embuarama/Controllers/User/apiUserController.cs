@@ -28,11 +28,11 @@ namespace api_embuarama.Controllers.User
                 if (usuario != null)
                     return Request.CreateResponse(HttpStatusCode.OK, new { valid = true, message = "Bem vindo!", userData = usuario });
                 else
-                    return Request.CreateResponse(HttpStatusCode.BadRequest, new { valid = true, message = "Login ou senha inválidos!" });
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, new { valid = false, message = "Login ou senha inválidos!" });
             }
             catch (Exception ex)
             {
-                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { valid = true, message = "Erro:" + ex });
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { valid = false, message = "Erro:" + ex });
             }
         }
 
