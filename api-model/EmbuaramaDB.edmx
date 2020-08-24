@@ -232,6 +232,7 @@
           <Property Name="FL_REMEMBER" Type="bit" Nullable="false" />
           <Property Name="ID_EMPRESA" Type="int" Nullable="false" />
           <Property Name="DS_TOKEN_EMPRESA" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="FL_EMPRESA" Type="bit" Nullable="false" />
         </EntityType>
         <Association Name="FK__TB_BRASSA__ID_BR__25518C17">
           <End Role="TB_BRASSAGEM" Type="Self.TB_BRASSAGEM" Multiplicity="1" />
@@ -772,6 +773,7 @@
           <NavigationProperty Name="TB_BRASSAGEM" Relationship="Self.FK__TB_BRASSA__ID_US__17036CC0" FromRole="TB_USUARIO" ToRole="TB_BRASSAGEM" />
           <NavigationProperty Name="TB_EMPRESA" Relationship="Self.FK__TB_USUARI__ID_EM__72C60C4A" FromRole="TB_USUARIO" ToRole="TB_EMPRESA" />
           <Property Name="DS_TOKEN_EMPRESA" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FL_EMPRESA" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="FK__TB_BRASSA__ID_BR__25518C17">
           <End Role="TB_BRASSAGEM" Type="Self.TB_BRASSAGEM" Multiplicity="1" />
@@ -1286,6 +1288,7 @@
           <EntitySetMapping Name="TB_USUARIO">
             <EntityTypeMapping TypeName="DB_EMBUARAMA_Model.TB_USUARIO">
               <MappingFragment StoreEntitySet="TB_USUARIO">
+                <ScalarProperty Name="FL_EMPRESA" ColumnName="FL_EMPRESA" />
                 <ScalarProperty Name="DS_TOKEN_EMPRESA" ColumnName="DS_TOKEN_EMPRESA" />
                 <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
                 <ScalarProperty Name="DS_NOME" ColumnName="DS_NOME" />

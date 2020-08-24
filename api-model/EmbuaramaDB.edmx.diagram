@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d89da84355624922b0856b7694cf8814" Name="Diagram1" ZoomLevel="86">
+      <Diagram DiagramId="d89da84355624922b0856b7694cf8814" Name="Diagram1" ZoomLevel="46">
         <EntityTypeShape EntityType="DB_EMBUARAMA_Model.TB_BRASSAGEM" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_EMBUARAMA_Model.TB_BRASSAGEM_MOAGEM" Width="1.5" PointX="7.5" PointY="2.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_EMBUARAMA_Model.TB_CALDEIRA" Width="1.5" PointX="9.75" PointY="1.125" IsExpanded="true" />
