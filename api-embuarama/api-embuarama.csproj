@@ -166,6 +166,7 @@
     <Compile Include="Controllers\GitHub\apiGitHubController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\User\apiUserController.cs" />
+    <Compile Include="DTO\CompanyRegisterDTO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
