@@ -89,5 +89,17 @@ namespace api_embuarama.Controllers.User
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, new { valid = true, message = "Erro:" + ex });
             }
         }
+
+        [HttpGet]
+        [Route("v1/api/user/recovery")]
+        public string RecoveryPassword()
+        {
+            Mail m = new Mail();
+            string from = "";
+            string to = "";
+            m.EnviarEmail(from, to, "", "", "teste", "body");
+
+            return "OK";
+        }
     }
 }
