@@ -2,6 +2,7 @@
 using api_embuarama.Models.User;
 using api_embuarama.Utils;
 using api_model;
+using Newtonsoft.Json;
 using System;
 using System.Net;
 using System.Net.Http;
@@ -23,12 +24,17 @@ namespace api_embuarama.Controllers.User
 
             try
             {
-                ds_senha = serv.CriptografarSenha(ds_senha);
-                usuario = u.Validate(ds_login, ds_senha);
-                if (usuario != null)
-                    return Request.CreateResponse(HttpStatusCode.OK, new { valid = true, message = "Bem vindo!", userData = usuario });
-                else
-                    return Request.CreateResponse(HttpStatusCode.BadRequest, new { valid = false, message = "Login ou senha inválidos!" });
+                if (ModelState.IsValid)
+                {
+
+                    ds_senha = serv.CriptografarSenha(ds_senha);
+                    usuario = u.Validate(ds_login, ds_senha);
+                    if (usuario != null)
+                        return Request.CreateResponse(HttpStatusCode.OK, new { valid = true, message = "Bem vindo!", userData = usuario });
+                    else
+                        return Request.CreateResponse(HttpStatusCode.OK, new { valid = false, message = "Login ou senha inválidos!" });
+                }
+                return Request.CreateResponse(HttpStatusCode.OK, new { valid = false, message = "Login ou senha inválidos!" });
             }
             catch (Exception ex)
             {
