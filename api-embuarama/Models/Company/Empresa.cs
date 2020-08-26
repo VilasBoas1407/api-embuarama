@@ -10,9 +10,8 @@ namespace api_embuarama.Models.Company
     {
         DB_EMBUARAMAEntities db = new DB_EMBUARAMAEntities();
 
-        public bool FindCompanyByID(string DS_TOKEN_EMPRESA)
+        public TB_EMPRESA FindCompanyByID(string DS_TOKEN_EMPRESA)
         {
-            bool ret = true;
             TB_EMPRESA Company = new TB_EMPRESA();
 
             try
@@ -21,10 +20,7 @@ namespace api_embuarama.Models.Company
                     .Where(C => C.DS_TOKEN_EMPRESA == DS_TOKEN_EMPRESA)
                     .FirstOrDefault();
 
-                if (Company != null)
-                    ret = false;
-
-                return ret;
+                return Company;
             }
             catch (Exception ex)
             {

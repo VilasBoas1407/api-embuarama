@@ -50,25 +50,29 @@ namespace api_embuarama.Controllers.User
             Usuario u = new Usuario();
             Empresa e = new Empresa();
 
+            TB_EMPRESA Company = new TB_EMPRESA();
+
             string errorMessage = String.Empty;
 
             try
             {
                 if (ModelState.IsValid)
                 {
-                    bool TokenEmpresaValido = e.FindCompanyByID(User.DS_TOKEN_EMPRESA);
+                    Company = e.FindCompanyByID(User.DS_TOKEN_EMPRESA);
                     bool EmailValido = u.FindUserByEmail(User.DS_EMAIL);
                     bool LoginValido = u.FindUserByLogin(User.DS_LOGIN);
 
-                    if (TokenEmpresaValido && EmailValido && LoginValido)
+                    if (Company != null && EmailValido && LoginValido)
                     {
                         User.DS_SENHA = serv.CriptografarSenha(User.DS_SENHA);
+                        User.ID_EMPRESA = Company.ID_EMPRESA;
+
                         u.Create(User);
                         return Request.CreateResponse(HttpStatusCode.OK, new { valid = true, message = "Usuário cadastrado com sucesso!" });
                     }
                     else
                     {
-                        if (!TokenEmpresaValido)
+                        if (Company == null)
                             errorMessage = "O token empresa digitado não corresponde a nenhuma empresa na nossa base de dados!;";
                         if (!EmailValido)
                             errorMessage += "O e-mail digitado já está cadastrado na nossa base da dados!;";
@@ -81,7 +85,7 @@ namespace api_embuarama.Controllers.User
                 }
                 else
                 {
-                    return Request.CreateResponse(HttpStatusCode.BadRequest, new { valid = false, message = "Ocorreu um ao realizar o seu cadastro! Os seguintes campos são obrigatórios" });
+                    return Request.CreateResponse(HttpStatusCode.OK, new { valid = false, message = "Ocorreu um ao realizar o seu cadastro! Os seguintes campos são obrigatórios" });
                 }
             }
             catch (Exception ex)
