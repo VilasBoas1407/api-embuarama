@@ -35,7 +35,7 @@ namespace api_embuarama.Utils
 
                 using (var smtp = new SmtpClient("smtp.gmail.com"))
                 {
-                    smtp.EnableSsl = true; // GMail requer SSL
+                    smtp.EnableSsl = true; // GMail requer SSL 
                     smtp.Port = 587;       // porta para SSL
                     smtp.DeliveryMethod = SmtpDeliveryMethod.Network; // modo de envio
                     smtp.UseDefaultCredentials = false; // vamos utilizar credencias especificas
