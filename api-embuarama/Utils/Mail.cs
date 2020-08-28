@@ -11,39 +11,47 @@ namespace api_embuarama.Utils
     {
         public void EnviarEmail(string from, string recepient, string cc,string bcc, string subject, string body)
         {
-            MailMessage email = new MailMessage();
-
-            email.From = new MailAddress(from);
-            email.To.Add(new MailAddress(recepient));
-
-            if (cc != "")
+            try
             {
-                email.CC.Add(new MailAddress(cc));
-            }
-            if (bcc != "")
+                MailMessage email = new MailMessage();
 
+                email.From = new MailAddress(from);
+                email.To.Add(new MailAddress(recepient));
+
+                if (cc != "")
+                {
+                    email.CC.Add(new MailAddress(cc));
+                }
+                if (bcc != "")
+
+                {
+                    email.Bcc.Add(new MailAddress(bcc));
+                }
+
+                email.Subject = subject;
+                email.Body = body;
+                email.IsBodyHtml = true;
+                email.Priority = MailPriority.Normal;
+
+                using (var smtp = new SmtpClient("smtp.gmail.com"))
+                {
+                    smtp.EnableSsl = true; // GMail requer SSL
+                    smtp.Port = 587;       // porta para SSL
+                    smtp.DeliveryMethod = SmtpDeliveryMethod.Network; // modo de envio
+                    smtp.UseDefaultCredentials = false; // vamos utilizar credencias especificas
+
+                    // seu usuário e senha para autenticação
+                    smtp.Credentials = new NetworkCredential("DS_EMAIL", "DS_SENHA");
+
+                    // envia o e-mail
+                    smtp.Send(email);
+                }
+            }
+            catch (Exception ex)
             {
-                email.Bcc.Add(new MailAddress(bcc));
+                throw ex;
             }
 
-            email.Subject = subject;
-            email.Body = body;
-            email.IsBodyHtml = true;
-            email.Priority = MailPriority.Normal;
-
-            using (var smtp = new SmtpClient("smtp.gmail.com"))
-            {
-                smtp.EnableSsl = true; // GMail requer SSL
-                smtp.Port = 587;       // porta para SSL
-                smtp.DeliveryMethod = SmtpDeliveryMethod.Network; // modo de envio
-                smtp.UseDefaultCredentials = false; // vamos utilizar credencias especificas
-
-                // seu usuário e senha para autenticação
-                smtp.Credentials = new NetworkCredential("email-utilizado", "senha-email");
-
-                // envia o e-mail
-                smtp.Send(email);
-            }
         }
     }
 }

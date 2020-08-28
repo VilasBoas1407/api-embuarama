@@ -1,6 +1,7 @@
 ﻿using api_model;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -74,11 +75,41 @@ namespace api_embuarama.Models.User
             }
         }
 
+        public TB_USUARIO FindUserById(int ID_USUARIO)
+        {
+            TB_USUARIO User = new TB_USUARIO();
+
+            try
+            {
+                User = db.TB_USUARIO.Find(ID_USUARIO);
+
+                return User;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public void Create(TB_USUARIO User)
         {
             try
             {
                 db.TB_USUARIO.Add(User);
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void Update(TB_USUARIO User)
+        {
+            try
+            {
+                db.TB_USUARIO.Attach(User);
+                db.Entry(User).State = EntityState.Modified;
                 db.SaveChanges();
             }
             catch (Exception ex)

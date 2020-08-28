@@ -228,6 +228,7 @@
     <Property Name="ID_EMPRESA" Type="int" Nullable="false" />
     <Property Name="DS_TOKEN_EMPRESA" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="FL_EMPRESA" Type="bit" Nullable="false" />
+    <Property Name="DS_TOKEN_RECOVERY" Type="varchar" MaxLength="100" />
   </EntityType>
   <Association Name="FK__TB_BRASSA__ID_BR__25518C17">
     <End Role="TB_BRASSAGEM" Type="Self.TB_BRASSAGEM" Multiplicity="1" />

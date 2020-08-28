@@ -232,6 +232,7 @@
     <EntitySetMapping Name="TB_USUARIO">
       <EntityTypeMapping TypeName="DB_EMBUARAMA_Model.TB_USUARIO">
         <MappingFragment StoreEntitySet="TB_USUARIO">
+          <ScalarProperty Name="DS_TOKEN_RECOVERY" ColumnName="DS_TOKEN_RECOVERY" />
           <ScalarProperty Name="FL_EMPRESA" ColumnName="FL_EMPRESA" />
           <ScalarProperty Name="DS_TOKEN_EMPRESA" ColumnName="DS_TOKEN_EMPRESA" />
           <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />

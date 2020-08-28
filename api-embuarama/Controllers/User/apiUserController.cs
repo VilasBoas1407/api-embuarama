@@ -96,14 +96,39 @@ namespace api_embuarama.Controllers.User
 
         [HttpGet]
         [Route("v1/api/user/recovery")]
-        public string RecoveryPassword()
+        public HttpResponseMessage RecoveryPassword(int ID_USUARIO)
         {
-            Mail m = new Mail();
-            string from = "";
-            string to = "";
-            m.EnviarEmail(from, to, "", "", "teste", "body");
+            TB_USUARIO User = new TB_USUARIO();
 
-            return "OK";
+            Mail m = new Mail();
+            BodyEmail bm = new BodyEmail();
+            Services s = new Services();
+            Usuario u = new Usuario();
+
+            try
+            {
+
+                User = u.FindUserById(ID_USUARIO);
+
+                string TOKEN_RECOVERY = s.GerarTokenEmpresa();
+                string from = "lucasvilasboaslage@gmail.com";
+                string body = bm.FORGOT_PASSWORD;
+                string destinatario = User.DS_EMAIL;
+                body = body.Replace("{TOKEN}", TOKEN_RECOVERY);
+
+                User.DS_TOKEN_RECOVERY = TOKEN_RECOVERY;
+
+                //Atualizar campo DS_TOKEN_RECOVERY
+                u.Update(User);
+
+                m.EnviarEmail(from, destinatario, "", "", "EMBUARAMA - Recuperar Senha", body);
+
+                return Request.CreateResponse(HttpStatusCode.OK, new { valid = true, message = "Foi enviado um código de verificação para o e-mail cadastrado" });
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { valid = true, message = "Erro:" + ex }); 
+            }
         }
     }
 }
