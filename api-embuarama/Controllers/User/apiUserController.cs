@@ -96,7 +96,7 @@ namespace api_embuarama.Controllers.User
 
         [HttpGet]
         [Route("v1/api/user/recovery")]
-        public HttpResponseMessage RecoveryPassword(int ID_USUARIO)
+        public HttpResponseMessage RecoveryPassword(string DS_EMAIL)
         {
             TB_USUARIO User = new TB_USUARIO();
 
@@ -108,26 +108,51 @@ namespace api_embuarama.Controllers.User
             try
             {
 
-                User = u.FindUserById(ID_USUARIO);
+                User = u.GetUserByEmail(DS_EMAIL);
+                if(User != null)
+                {
+                    string TOKEN_RECOVERY = s.GerarTokenEmpresa();
+                    string body = bm.FORGOT_PASSWORD;
+                    string destinatario = User.DS_EMAIL;
+                    body = body.Replace("{TOKEN}", TOKEN_RECOVERY);
 
-                string TOKEN_RECOVERY = s.GerarTokenEmpresa();
-                string from = "lucasvilasboaslage@gmail.com";
-                string body = bm.FORGOT_PASSWORD;
-                string destinatario = User.DS_EMAIL;
-                body = body.Replace("{TOKEN}", TOKEN_RECOVERY);
+                    User.DS_TOKEN_RECOVERY = TOKEN_RECOVERY;
 
-                User.DS_TOKEN_RECOVERY = TOKEN_RECOVERY;
+                    //Atualizar campo DS_TOKEN_RECOVERY
+                    u.Update(User);
 
-                //Atualizar campo DS_TOKEN_RECOVERY
-                u.Update(User);
+                    m.EnviarEmail(destinatario, "", "", "EMBUARAMA - Recuperar Senha", body);
 
-                m.EnviarEmail(from, destinatario, "", "", "EMBUARAMA - Recuperar Senha", body);
+                    return Request.CreateResponse(HttpStatusCode.OK, new { valid = true, message = "Foi enviado um código de verificação para o e-mail cadastrado" });
+                }
+                else
+                    return Request.CreateResponse(HttpStatusCode.OK, new { valid = false, message = "Não foi encontrado usuário com esse e-mail!" });
 
-                return Request.CreateResponse(HttpStatusCode.OK, new { valid = true, message = "Foi enviado um código de verificação para o e-mail cadastrado" });
             }
             catch (Exception ex)
             {
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, new { valid = true, message = "Erro:" + ex }); 
+            }
+        }
+
+        [HttpPost]
+        [Route("v1/api/user/ValidToken")]
+        public HttpResponseMessage ValidToken(string DS_EMAIL, string DS_TOKEN_RECOVERY)
+        {
+            Usuario u = new Usuario();
+            TB_USUARIO User = new TB_USUARIO();
+
+            try
+            {
+                User = u.GetUserByEmail(DS_EMAIL);
+                if (User.DS_TOKEN_RECOVERY == DS_TOKEN_RECOVERY)
+                    return Request.CreateResponse(HttpStatusCode.OK, new { valid = true, tokenValid = true});
+                else
+                    return Request.CreateResponse(HttpStatusCode.OK, new { valid = true, tokenValid = false });
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, new { valid = false, message = "Erro:" + ex });
             }
         }
     }

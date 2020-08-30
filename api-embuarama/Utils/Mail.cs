@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -9,13 +10,15 @@ namespace api_embuarama.Utils
 {
     public class Mail
     {
-        public void EnviarEmail(string from, string recepient, string cc,string bcc, string subject, string body)
+        public void EnviarEmail(string recepient, string cc,string bcc, string subject, string body)
         {
             try
             {
-                MailMessage email = new MailMessage();
+                string EmailRecovery = ConfigurationSettings.AppSettings["Email"].ToString();
+                string SenhaRecovery = ConfigurationSettings.AppSettings["Senha"].ToString();
 
-                email.From = new MailAddress(from);
+                MailMessage email = new MailMessage();
+                email.From = new MailAddress(EmailRecovery);
                 email.To.Add(new MailAddress(recepient));
 
                 if (cc != "")
@@ -41,7 +44,7 @@ namespace api_embuarama.Utils
                     smtp.UseDefaultCredentials = false; // vamos utilizar credencias especificas
 
                     // seu usuário e senha para autenticação
-                    smtp.Credentials = new NetworkCredential("DS_EMAIL", "DS_SENHA");
+                    smtp.Credentials = new NetworkCredential(EmailRecovery, SenhaRecovery);
 
                     // envia o e-mail
                     smtp.Send(email);

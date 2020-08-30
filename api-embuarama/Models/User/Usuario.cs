@@ -52,6 +52,25 @@ namespace api_embuarama.Models.User
             }
         }
 
+        public TB_USUARIO GetUserByEmail(string DS_EMAIL)
+        {
+
+            TB_USUARIO User = new TB_USUARIO();
+
+            try
+            {
+                User = db.TB_USUARIO
+                    .Where(C => C.DS_EMAIL == DS_EMAIL)
+                    .FirstOrDefault();
+
+                return User;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
         public bool FindUserByLogin(string DS_LOGIN)
         {
             bool ret = true;
