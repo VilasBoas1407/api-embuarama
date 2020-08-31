@@ -155,5 +155,25 @@ namespace api_embuarama.Controllers.User
                 return Request.CreateResponse(HttpStatusCode.OK, new { valid = false, message = "Erro:" + ex });
             }
         }
+
+        [HttpPost]
+        [Route("v1/api/user/ChangePassword")]
+        public HttpResponseMessage ChangePassword(string DS_EMAIL, string DS_SENHA)
+        {
+            TB_USUARIO User = new TB_USUARIO();
+            Usuario u = new Usuario();
+            try
+            {
+                User = u.GetUserByEmail(DS_EMAIL);
+                User.DS_SENHA = DS_SENHA;
+                u.Update(User);
+
+                return Request.CreateResponse(HttpStatusCode.OK, new { valid = true, message = "Senha alterada com sucesso!" });
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { valid = true, message = "Erro:" + ex });
+            }
+        }
     }
 }
